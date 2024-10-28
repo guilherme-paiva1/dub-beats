@@ -4,19 +4,30 @@ body {
     background-color: black;
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Oxanium', sans-serif;
     scroll-behavior: smooth;
 }
 
 /* -------------------------- HEADER DO PROJETO -------------------------------- */
-.container {
-    width: 100%;
-}
-
 .nav-contents {
     display: flex;
     justify-content: space-between;
-    align-self: flex-end;
+    height: 100%;
+}
+
+.navbar {
+    font-size: 20px;
+}
+
+.navbar-brand {
+    font-size: 40px;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px 0 5px
 }
 
 /* -------------------------- MODAL LOGIN E CADASTRO ---------------------------- */
