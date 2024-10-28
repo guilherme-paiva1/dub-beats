@@ -13,11 +13,36 @@ body {
     width: 100%;
 }
 
-#nav-contents {
+.nav-contents {
     display: flex;
     justify-content: space-between;
+    align-self: flex-end;
 }
 
+/* -------------------------- MODAL LOGIN E CADASTRO ---------------------------- */
+
+.modal-header.unactive, .modal-body.unactive, .modal-footer.unactive {
+    display: none;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.modal-body button{
+    width: 50%;
+    align-self: center;
+    background-color: white;
+    border: none;
+    cursor: default;
+}
+
+.modal-body span {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
 /* ------------------- FOOTER ----------------------------- */
 
 .footer {
