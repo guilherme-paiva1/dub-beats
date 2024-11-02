@@ -1,21 +1,9 @@
-function exibirCadastro() {
-    header_login.classList.add('unactive');
-    header_cadastro.classList.remove('unactive');
-
-    body_login.classList.add('unactive');
-    body_cadastro.classList.remove('unactive');
-
-    footer_login.classList.add('unactive');
-    footer_cadastro.classList.remove('unactive');
+var nav_home = document.getElementById('nav_home');
+if (nav_home) {
+    nav_home.classList.add('active');
 }
 
-function exibirLogin() {
-    header_cadastro.classList.add('unactive');
-    header_login.classList.remove('unactive');
-
-    body_cadastro.classList.add('unactive');
-    body_login.classList.remove('unactive');
-
-    footer_cadastro.classList.add('unactive');
-    footer_login.classList.remove('unactive');
+var nav_sobre = document.getElementById('nav_sobre');
+if (nav_sobre) {
+    nav_sobre.classList.remove('active');
 }
