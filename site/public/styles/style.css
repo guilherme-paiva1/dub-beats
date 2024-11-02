@@ -1,11 +1,14 @@
 /* Adicionar aqui toda a estilização criada para sua aplicação. */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: black;
     margin: 0;
-    padding-top: 100px;
-    font-family: 'Oxanium', sans-serif;
-    scroll-behavior: smooth;
+    padding-top: 80px;
+    font-family: 'Oxanium', sans-serif; 
 }
 
 :root {
@@ -63,7 +66,7 @@ body {
 }
 
 .modal-body span {
-    color: blue;
+    color: var(--cor-principal);
     text-decoration: underline;
     cursor: pointer;
 }
@@ -77,14 +80,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: var(--cor-principal);
+    background-color: var(--cor-sextanaria);
     background-image: url(../assets/banner.jpg);
     background-repeat: no-repeat;
     background-position:10% center;
     background-size: cover;
     background-attachment: fixed;
     color: white;
-    height: 300px;
+    height: 450px;
     width: 100%;
 }
 
@@ -95,4 +98,75 @@ body {
     border-radius: 10px 0 0 10px;
 }
 
+
 /*-------------- CONTEÚDO INDEX --------------*/
+
+.container .conteudo {
+    display: flex;
+    flex-direction: row;
+}
+
+.conteudo .div-texto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0 0 0;
+    padding: 0 10px 0 10px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.conteudo .div-texto .span-destaque {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.conteudo .div-imagem {
+    background-color: var(--cor-sextanaria);
+    background-repeat: no-repeat;
+    background-position:10% center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 250px;
+    width: 100%;
+}
+
+.conteudo #imagem-oque {
+    background-image: url(../assets/dj-pic.jpg);
+}
+
+.conteudo #imagem-pessoas {
+    background-image: url(../assets/dj-pic.jpg);
+}
+
+.btn-sobre {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    padding: 8px;
+    margin: 0 0 10px 0;
+}
+
+.btn-sobre i{
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+/*-------------- CONTEÚDO SOBRE --------------*/
+.conteudo #imagem-sobre {
+    background-image: url(../assets/dj-pic-woman.jpg);
+    background-position: center bottom;
+    height: 300px;
+}
+
+.conteudo #imagem-sobre2 {
+    background-image: url(../assets/dj-pic-woman.jpg);
+    background-position: center bottom;
+    height: 300px;
+}
