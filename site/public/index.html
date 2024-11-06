@@ -108,11 +108,12 @@
                         <label for="input_senha" class="form-label">Confirmar senha</label>
                         <input type="password" class="form-control" id="input_confirmar_senha_cadastro"></input>
                     </div>
+                    <span id="span-retorno-cadastro"></span>
                     <button onclick="exibirLogin()">Já tem conta? <br><span>Entrar</span></button>
                 </div>
                 <div class="modal-footer unactive" id="footer_cadastro">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Cadastrar</button>
+                    <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
                 </div>
             </div>
         </div>
