@@ -7,7 +7,6 @@ function cadastrar() {
   var emailVar = input_email_cadastro.value;
   var senhaVar = input_senha_cadastro.value;
   var confirmacaoSenhaVar = input_confirmar_senha_cadastro.value;
-  var span_situacao = document.getElementById('span-retorno-cadastro');
 
   // Verificando se há algum campo em branco
   if (
@@ -41,7 +40,6 @@ function cadastrar() {
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
-        //cardErro.style.display = "block";
 
         aparecerMensagem("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
@@ -49,24 +47,21 @@ function cadastrar() {
           exibirLogin();
         }, "2000");
 
-        limparFormulario();
-        //finalizarAguardar();
       } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
       }
     })
     .catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
-      //finalizarAguardar();
     });
 
   return false;
 }
 
 function sumirMensagem() {
-  span_situacao.innerHTML = "";
+  span_retorno_cadastro.innerHTML = "";
 }
 
 function aparecerMensagem(texto) {
-  span_situacao.innerHTML = texto;
+  span_retorno_cadastro.innerHTML = texto;
 }

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/sessao.js"></script>
 </head>
@@ -30,23 +30,10 @@
                         </a>
                         <span>|</span>
                     </li>
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" id="nav_sobre" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <span> <i class="bi bi-question-circle"></i></span> Sobre o projeto
+                    <li class="nav-item">
+                        <a class="nav-link" href="./sobre.html">
+                            <span><i class="bi bi-question-circle"></i></span> Sobre o projeto
                         </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="./sobre.html">Sobre mim</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="./sobre.html">Sobre Alguma Coisa</a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
                         <span>|</span>
@@ -108,7 +95,7 @@
                         <label for="input_senha" class="form-label">Confirmar senha</label>
                         <input type="password" class="form-control" id="input_confirmar_senha_cadastro"></input>
                     </div>
-                    <span id="span-retorno-cadastro"></span>
+                    <span id="span_retorno_cadastro"></span>
                     <button onclick="exibirLogin()">Já tem conta? <br><span>Entrar</span></button>
                 </div>
                 <div class="modal-footer unactive" id="footer_cadastro">
@@ -143,9 +130,11 @@
             <div class="div-texto">
                 <h2>Compartilhe experiências</h2>
                 <p>
-                    Conte sua <span class="span-destaque">história</span>. Conte seus <span class="span-destaque">gostos</span>. Conte o que <span class="span-destaque">quiser</span>.
+                    Conte sua <span class="span-destaque">história</span>. Conte seus <span
+                        class="span-destaque">gostos</span>. Conte o que <span class="span-destaque">quiser</span>.
                     <br>
-                    Descubra gostos em comum, novos artistas, compartilhe sua playlist. Conheça pessoas <span class="span-destaque">que amam o que você ama.</span>
+                    Descubra gostos em comum, novos artistas, compartilhe sua playlist. Conheça pessoas <span
+                        class="span-destaque">que amam o que você ama.</span>
                 </p>
                 <a href="./sobre.html" class="btn-sobre">
                     <span>

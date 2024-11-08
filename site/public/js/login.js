@@ -6,11 +6,7 @@ function entrar() {
 
     if (emailVar == "" || senhaVar == "") {
         alert('Preencha todos os campos!');
-        //finalizarAguardar();
         return false;
-    }
-    else {
-        //setInterval(sumirMensagem, 5000);
     }
 
     console.log("FORM LOGIN: ", emailVar);
@@ -26,8 +22,6 @@ function entrar() {
             senhaServer: senhaVar
         })
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
         if (resposta.ok) {
             console.log(resposta);
 
@@ -49,7 +43,6 @@ function entrar() {
 
             resposta.text().then(texto => {
                 console.error(texto);
-                //finalizarAguardar(texto);
             });
         }
 
@@ -59,7 +52,3 @@ function entrar() {
 
     return false;
 }
-
-//function sumirMensagem() {
-    //cardErro.style.display = "none"
-//}

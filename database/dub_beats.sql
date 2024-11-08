@@ -1,4 +1,4 @@
-
+CREATE DATABASE dub_beats;
 USE dub_beats;
 
 CREATE TABLE Usuario (
@@ -23,7 +23,7 @@ CREATE TABLE Postagem (
 
 CREATE TABLE Comentario (
 	id_comentario INT AUTO_INCREMENT,
-	fk_postagem INT
+	fk_postagem INT,
 	fk_usuario INT,
 	conteudo VARCHAR(500),
 	PRIMARY KEY (id_comentario, fk_postagem, fk_usuario),

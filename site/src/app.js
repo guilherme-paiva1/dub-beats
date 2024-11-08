@@ -17,10 +17,6 @@ var app = express();
 
 var indexRouter = require("./routes/index");
 var usuarioRouter = require("./routes/usuarios");
-var avisosRouter = require("./routes/avisos");
-var fazendaRouter = require("./routes/fazendas");
-var compostRouter = require("./routes/composts");
-var empresasRouter = require("./routes/empresas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,10 +26,6 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/avisos", avisosRouter);
-app.use("/fazendas", fazendaRouter);
-app.use("/compost", compostRouter);
-app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
