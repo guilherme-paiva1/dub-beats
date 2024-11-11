@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/sessao.js"></script>
 </head>
@@ -51,8 +51,76 @@
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="div-feed" id="div_feed">
+            <div class="div-publicacao">
+                <div class="div-cabecalho-publicacao">
+                    <h3>BigMouth publicou:</h3>
+                </div>
+                <div class="div-conteudo-publicacao">
+                    <div class="div-titulo">
+                        <h4>Qual seu drop favorito de Recess?</h4>
+                    </div>
+                    <div class="div-conteudo">
+                        <p>Como um grande fã de Skrillex, queria saber da comunidade:
+                            Qual o melhor drop do álbum Recess pra vocês? E por quê?
+                        </p>
+                    </div>
+                    <span class="icons-interagir">
+                        <input type="text" disabled onclick="abrirInputComentario()" id="comentar_pub">
+                        <i class="bi bi-chat" onclick="abrirInputComentario()"></i>
+                        <i class="bi bi-heart" onclick="curtir()" id="curtir_pub"></i>
+                    </span>
+                </div>
+                <div class="div-interagir">
+                    <span class="comentarios-interagir" onclick="listarComentarios()" id="comentarios_publicacao1">
+                        Ver comentários dessa publicação
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-modal-feed">
+        <div class="div-acoes">
+            <span data-bs-toggle="modal" data-bs-target="#modalPublicar" class="botao">
+                <span class="texto">Publicar</span>
+                <i class="bi bi-pencil-square"></i>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalPublicar" tabindex="-1" aria-labelledby="modalPublicarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal de Login-->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalPublicarLabel">Entrar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="input_titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="input_titulo" placeholder="Título da publicação">
+                    </div>
+                    <div class="mb-3">
+                        <label for="input_conteudo" class="form-label">Conteúdo</label>
+                        <input type="textarea" class="form-control" id="input_conteudo"></input>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="publicar()">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+<script src="../js/feed.js"></script>

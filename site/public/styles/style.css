@@ -8,7 +8,7 @@ body {
     background-color: black;
     margin: 0;
     padding-top: 80px;
-    font-family: 'Oxanium', sans-serif; 
+    font-family: 'Oxanium', sans-serif;
 }
 
 :root {
@@ -35,7 +35,7 @@ body {
 
 .navbar-brand {
     font-size: 40px;
-   
+
 }
 
 .nav-item {
@@ -51,7 +51,9 @@ body {
 
 /* -------------------------- MODAL LOGIN E CADASTRO ---------------------------- */
 
-.modal-header.unactive, .modal-body.unactive, .modal-footer.unactive {
+.modal-header.unactive,
+.modal-body.unactive,
+.modal-footer.unactive {
     display: none;
 }
 
@@ -60,7 +62,8 @@ body {
     flex-direction: column;
     width: 100%;
 }
-.modal-body button{
+
+.modal-body button {
     width: 50%;
     align-self: center;
     background-color: white;
@@ -79,6 +82,7 @@ body {
 .banner {
     width: 100%;
 }
+
 .banner .conteudo {
     display: flex;
     align-items: center;
@@ -86,7 +90,7 @@ body {
     background-color: var(--cor-sextanaria);
     background-image: url(../assets/banner.jpg);
     background-repeat: no-repeat;
-    background-position:10% center;
+    background-position: 10% center;
     background-size: cover;
     background-attachment: fixed;
     color: white;
@@ -94,7 +98,7 @@ body {
     width: 100%;
 }
 
-.banner .conteudo h1{
+.banner .conteudo h1 {
     font-size: 40px;
     background-color: black;
     padding: 10px;
@@ -129,7 +133,7 @@ body {
 .conteudo .div-imagem {
     background-color: var(--cor-sextanaria);
     background-repeat: no-repeat;
-    background-position:10% center;
+    background-position: 10% center;
     background-size: cover;
     background-attachment: fixed;
     height: 250px;
@@ -154,7 +158,7 @@ body {
     margin: 0 0 10px 0;
 }
 
-.btn-sobre i{
+.btn-sobre i {
     background-color: black;
     color: white;
     border-radius: 50%;
@@ -172,4 +176,142 @@ body {
     background-image: url(../assets/dj-pic-woman.jpg);
     background-position: center bottom;
     height: 300px;
+}
+
+/* ------------------ FEED --------------------- */
+.div-modal-feed {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 1;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 0 50px 100px 0;
+}
+
+.div-acoes {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    cursor: pointer;
+
+}
+
+.div-acoes .botao {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+    transition-property: width, opacity, display, border-radius;
+
+    .texto {
+        display: none;
+        opacity: 0;
+        width: 70px;
+        font-size: 25px;
+    }
+}
+
+.div-acoes .botao:hover {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    border-radius: 20px;
+    padding: 5px;
+
+    .texto {
+        display: flex;
+        opacity: 1;
+        background-color: white;
+    }
+}
+
+
+.div-acoes .botao {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.div-acoes .botao i {
+    color: black;
+    font-size: 40px;
+}
+
+.div-feed {
+    padding: 50px;
+}
+
+.div-publicacao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    color: black;
+    background-color: white;
+}
+
+.div-cabecalho-publicacao {
+    display: flex;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.div-conteudo-publicacao {
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+
+.div-titulo {
+    width: 100%;
+}
+
+.div-interagir {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 10px;
+}
+
+.icons-interagir {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    gap:15px;
+}
+
+.icons-interagir .bi.bi-heart:hover {
+    color:red;
+}
+
+.icons-interagir .bi.bi-heart-fill {
+    color:red;
+}
+
+.icons-interagir input {
+    font-size: 15px;
+    width: 90%;
+}
+
+.comentarios-interagir {
+    cursor: pointer;
+    color: grey;
+    text-decoration: underline;
 }
