@@ -1,3 +1,7 @@
+if(sessionStorage.ID_USUARIO == undefined) {
+    window.location = '../index.html';
+} 
+
 function curtir() {
     var listaClassesDOM = curtir_pub.classList;
     var listaClasses = Array.from(listaClassesDOM);

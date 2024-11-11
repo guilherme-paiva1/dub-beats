@@ -315,3 +315,36 @@ body {
     color: grey;
     text-decoration: underline;
 }
+
+/*------------ PERFIL ----------------*/
+.container {
+    height: 100%;
+}
+.div-perfil {
+    padding: 50px;
+    height: 100%;
+}
+
+.div-conteudo-perfil {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 50px;
+    padding: 20px 0;
+    color: black;
+    background-color: white;
+}
+
+.div-conteudo-perfil .div-resumo {
+    width: 50%;
+    margin-left: 20px;
+    padding: 10px;
+    border-right: 1px solid black;
+}
+
+.div-conteudo-perfil .div-estatisticas {
+    width: 50%;
+    padding: 10px;
+}
