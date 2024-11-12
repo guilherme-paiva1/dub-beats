@@ -188,6 +188,7 @@ body {
     height: 100%;
     width: 100%;
     padding: 0 50px 100px 0;
+    pointer-events: none;
 }
 
 .div-acoes {
@@ -196,50 +197,43 @@ body {
     justify-content: flex-end;
     flex-direction: column;
     cursor: pointer;
+    pointer-events: auto;
 
 }
 
 .div-acoes .botao {
-    width: 120px;
-    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    background-color: white;
     padding: 10px;
-    transition-timing-function: ease-in-out;
     transition-duration: 0.5s;
-    transition-property: width, opacity, display, border-radius;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    transition-timing-function: ease-in-out;
+    transition-property: width, opacity, display, border-radius, font-size;
 
     .texto {
-        display: none;
         opacity: 0;
-        width: 70px;
-        font-size: 25px;
+        font-size: 0;
+        width: 0;
     }
 }
 
 .div-acoes .botao:hover {
     display: flex;
-    justify-content: space-between;
     width: 150px;
     border-radius: 20px;
     padding: 5px;
-
+    
     .texto {
-        display: flex;
+        font-size: 25px;
         opacity: 1;
-        background-color: white;
+        width: 70px;
     }
-}
-
-
-.div-acoes .botao {
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    color: black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
 }
 
 .div-acoes .botao i {
@@ -310,6 +304,10 @@ body {
     width: 90%;
 }
 
+.icons-interagir i {
+    cursor: pointer;
+}
+
 .comentarios-interagir {
     cursor: pointer;
     color: grey;
@@ -377,10 +375,18 @@ body {
 }
 
 .div-bio-conteudo textarea {
+    background-color: white;
     height: 100%;
     width: 100%;
     border:none;
     resize: none;
+}
+
+.div-bio-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .div-bio button {

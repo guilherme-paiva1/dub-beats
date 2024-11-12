@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.put("/atualizarBio", function (req,res) {
+    usuarioController.atualizarBio(req, res);
+})
+
 module.exports = router;

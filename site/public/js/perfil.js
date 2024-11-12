@@ -14,3 +14,45 @@ function manipularBio() {
         btn_salvar.style.fontSize = '0';
     }
 }
+
+function salvarAlteracoes() {
+    var bio = campo_bio.value;
+    var id = sessionStorage.ID_USUARIO;
+    console.log(bio);
+
+    fetch("/usuarios/atualizarBio", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            bioServer: bio,
+            idServer: id
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                alert('Bio atualizada com sucesso!')
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao atualizar a bio!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}

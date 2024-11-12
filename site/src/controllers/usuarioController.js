@@ -71,7 +71,32 @@ function cadastrar(req, res) {
     }
 }
 
+function atualizarBio(req, res) {
+    var bio = req.body.bioServer;
+    var id_usuario = req.body.idServer;
+
+    if (bio == undefined) {
+        res.status(400).send("Sua bio está undefined!");
+    } else if(id_usuario == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else {
+        usuarioModel.atualizarBio(bio, id_usuario)
+            .then(
+                function (resultadoAtualizar) {
+                    res.json(resultadoAtualizar);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao atualizar a bio! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    atualizarBio
 }

@@ -28,11 +28,12 @@ function entrar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id
+                sessionStorage.EMAIL_USUARIO = json[0].email;
+                sessionStorage.NOME_USUARIO = json[0].nome;
+                sessionStorage.ID_USUARIO = json[0].id_usuario;
+                sessionStorage.BIO_USUARIO = json[0].bio;
                 setTimeout(function () {
-                    window.location = "../private/feed.html";
+                   window.location = "../private/feed.html";
                 }, 1000); // apenas para exibir o loading
 
             });

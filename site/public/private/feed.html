@@ -19,6 +19,14 @@
 </head>
 
 <body>
+    <div class="div-modal-feed">
+        <div class="div-acoes">
+            <span data-bs-toggle="modal" data-bs-target="#modalPublicar" class="botao">
+                <span class="texto">Publicar</span>
+                <i class="bi bi-pencil-square"></i>
+            </span>
+        </div>
+    </div>
     <nav class="navbar fixed-top navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">DUB Beats</a>
@@ -82,22 +90,12 @@
         </div>
     </div>
 
-    <div class="div-modal-feed">
-        <div class="div-acoes">
-            <span data-bs-toggle="modal" data-bs-target="#modalPublicar" class="botao">
-                <span class="texto">Publicar</span>
-                <i class="bi bi-pencil-square"></i>
-            </span>
-        </div>
-    </div>
-
-
     <div class="modal fade" id="modalPublicar" tabindex="-1" aria-labelledby="modalPublicarLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!--Modal de Login-->
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalPublicarLabel">Entrar</h1>
+                    <h1 class="modal-title fs-5" id="modalPublicarLabel">Nova publicação</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
