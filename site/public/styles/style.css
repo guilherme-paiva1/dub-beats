@@ -348,3 +348,58 @@ body {
     width: 50%;
     padding: 10px;
 }
+
+.div-bio {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    align-items: flex-start;
+    width: 100%;
+    height: 300px;
+}
+
+.div-resumo-cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.div-resumo-cabecalho span {
+    font-size: 25px;
+    cursor: pointer;
+}
+.div-bio h1 {
+    font-size: 30px;
+}
+
+.div-bio-conteudo textarea {
+    height: 100%;
+    width: 100%;
+    border:none;
+    resize: none;
+}
+
+.div-bio button {
+    align-self: flex-end;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    transition-timing-function: ease-in-out;
+    font-size: 0;
+    transition-duration: 0.3s;
+    transition-property: width, opacity, height, background-color, font-size;
+}
+
+.div-bio button:hover {
+    background-color: grey;
+    color: white;
+}

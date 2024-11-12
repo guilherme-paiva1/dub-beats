@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Sobre o DUB Beats</title>
@@ -79,9 +80,9 @@
                 </div>
                 <div class="modal-footer" id="footer_login">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Entrar</button>
+                    <button type="button" class="btn btn-primary" onclick="entrar()">Entrar</button>
                 </div>
-    
+
                 <!--Modal de Cadastro-->
                 <div class="modal-header unactive" id="header_cadastro">
                     <h1 class="modal-title fs-5">Cadastrar</h1>
@@ -94,7 +95,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="input_email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="input_email_cadastro" placeholder="email@exemplo.com">
+                        <input type="email" class="form-control" id="input_email_cadastro"
+                            placeholder="email@exemplo.com">
                     </div>
                     <div class="mb-3">
                         <label for="input_senha" class="form-label">Senha</label>
@@ -104,15 +106,17 @@
                         <label for="input_senha" class="form-label">Confirmar senha</label>
                         <input type="password" class="form-control" id="input_confirmar_senha_cadastro"></input>
                     </div>
+                    <span id="span_retorno_cadastro"></span>
                     <button onclick="exibirLogin()">Já tem conta? <br><span>Entrar</span></button>
                 </div>
                 <div class="modal-footer unactive" id="footer_cadastro">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Cadastrar</button>
+                    <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container">
         <div class="conteudo">
@@ -161,3 +165,5 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <script src="./js/modal.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/cadastro.js"></script>
