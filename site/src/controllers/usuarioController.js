@@ -93,10 +93,31 @@ function atualizarBio(req, res) {
                 }
             );
     }
+}
 
+function recuperarBio(req, res) {
+    var id_usuario = req.body.idServer;
+
+    if (id_usuario == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else {
+        usuarioModel.recuperarBio(id_usuario)
+            .then(
+                function (resultadoRecuperar) {
+                    res.json(resultadoRecuperar);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao recuperar a bio! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 }
 module.exports = {
     autenticar,
     cadastrar,
-    atualizarBio
+    atualizarBio,
+    recuperarBio
 }

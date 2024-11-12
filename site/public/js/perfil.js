@@ -1,3 +1,8 @@
+var id = sessionStorage.ID_USUARIO;
+recuperarBio(id);
+//if id na url igual ao id na session storage
+
+//if id na url diferente do id na session storage
 campo_bio.disabled = true;
 function manipularBio() {
     if (campo_bio.disabled == true) {
@@ -18,7 +23,6 @@ function manipularBio() {
 function salvarAlteracoes() {
     var bio = campo_bio.value;
     var id = sessionStorage.ID_USUARIO;
-    console.log(bio);
 
     fetch("/usuarios/atualizarBio", {
         method: "PUT",
@@ -35,10 +39,40 @@ function salvarAlteracoes() {
 
             resposta.json().then(json => {
                 alert('Bio atualizada com sucesso!')
-                setTimeout(function () {
-                    location.reload();
-                }, 1000);
+                location.reload();
+            });
 
+        } else {
+
+            console.log("Houve um erro ao atualizar a bio!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function recuperarBio(id) {
+    fetch("/usuarios/recuperarBio", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idServer: id
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                campo_bio.value = json[0].bio;
             });
 
         } else {

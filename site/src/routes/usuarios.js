@@ -16,4 +16,8 @@ router.put("/atualizarBio", function (req,res) {
     usuarioController.atualizarBio(req, res);
 })
 
+router.post("/recuperarBio", function (req, res) {
+    usuarioController.recuperarBio(req, res);
+})
+
 module.exports = router;
