@@ -1,6 +1,42 @@
-if(sessionStorage.ID_USUARIO == undefined) {
-    window.location = '../index.html';
-} 
+function publicar() {
+    var titulo = input_titulo.value;
+    var conteudo = input_conteudo.value;
+    var id_usuario = sessionStorage.ID_USUARIO;
+
+    fetch("/postagens/publicar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            tituloServer: titulo,
+            conteudoServer: conteudo,
+            idServer: id_usuario
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                alert("Publicado com sucesso!")
+                location.reload();
+            });
+
+        } else {
+
+            console.log("Houve um erro ao publicar, tente novamente mais tarde");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
 
 function curtir() {
     var listaClassesDOM = curtir_pub.classList;

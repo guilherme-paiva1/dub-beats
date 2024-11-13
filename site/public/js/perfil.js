@@ -1,6 +1,5 @@
-var id = sessionStorage.ID_USUARIO;
-recuperarBio(id);
 //if id na url igual ao id na session storage
+manipularInformacoesUsuario();
 
 //if id na url diferente do id na session storage
 campo_bio.disabled = true;
@@ -89,4 +88,10 @@ function recuperarBio(id) {
     })
 
     return false;
+}
+
+function manipularInformacoesUsuario() {
+    var id = sessionStorage.ID_USUARIO;
+    nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    recuperarBio(id);
 }
