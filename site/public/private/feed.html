@@ -18,7 +18,7 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body>
+<body onload="listarPublicacoes()">
     <div class="div-modal-feed">
         <div class="div-acoes">
             <span data-bs-toggle="modal" data-bs-target="#modalPublicar" class="botao">
@@ -62,31 +62,7 @@
 
     <div class="container">
         <div class="div-feed" id="div_feed">
-            <div class="div-publicacao">
-                <div class="div-cabecalho-publicacao">
-                    <h3>BigMouth publicou:</h3>
-                </div>
-                <div class="div-conteudo-publicacao">
-                    <div class="div-titulo">
-                        <h4>Qual seu drop favorito de Recess?</h4>
-                    </div>
-                    <div class="div-conteudo">
-                        <p>Como um grande fã de Skrillex, queria saber da comunidade:
-                            Qual o melhor drop do álbum Recess pra vocês? E por quê?
-                        </p>
-                    </div>
-                    <span class="icons-interagir">
-                        <input type="text" disabled onclick="abrirInputComentario()" id="comentar_pub">
-                        <i class="bi bi-chat" onclick="abrirInputComentario()"></i>
-                        <i class="bi bi-heart" onclick="curtir()" id="curtir_pub"></i>
-                    </span>
-                </div>
-                <div class="div-interagir">
-                    <span class="comentarios-interagir" onclick="listarComentarios()" id="comentarios_publicacao1">
-                        Ver comentários dessa publicação
-                    </span>
-                </div>
-            </div>
+            
         </div>
     </div>
 

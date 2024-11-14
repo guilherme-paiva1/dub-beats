@@ -27,6 +27,23 @@ function publicar(req, res) {
 
 }
 
+function listar(req, res) {
+    console.log('entrou no controller')
+    postagemModel.listar()
+        .then(
+            function (resultadoListar) {
+                res.json(resultadoListar);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao listar! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
-    publicar
+    publicar,
+    listar
 }
