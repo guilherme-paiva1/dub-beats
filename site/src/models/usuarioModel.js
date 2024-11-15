@@ -19,6 +19,8 @@ function cadastrar(nome, email, senha) {
             ('${nome}', '${email}', MD5('${senha}'));
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    //retorna a execução no banco de dados
     return database.executar(instrucaoSql);
 }
 
@@ -36,11 +38,11 @@ function atualizarBio(bio, id) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function recuperarBio(id) {   
+function recuperarInfos(id) {   
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT bio 
+        SELECT id_usuario, nome, bio 
             FROM Usuario
                 WHERE id_usuario = ${id};
     `;
@@ -52,5 +54,5 @@ module.exports = {
     autenticar,
     cadastrar,
     atualizarBio,
-    recuperarBio
+    recuperarInfos
 };

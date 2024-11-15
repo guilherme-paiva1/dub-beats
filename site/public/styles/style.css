@@ -207,12 +207,12 @@ body {
     color: black;
     background-color: white;
     padding: 10px;
-    transition-duration: 0.5s;
     flex-direction: row;
     align-items: center;
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
     transition-property: width, opacity, display, border-radius, font-size;
 
@@ -263,6 +263,10 @@ body {
     width: 80%;
 }
 
+.div-cabecalho-publicacao a {
+    text-decoration: none;
+    color: #B41EB2;
+}
 .div-conteudo-publicacao {
     width: 90%;
     border: 1px solid black;
@@ -319,8 +323,17 @@ body {
     height: 100%;
 }
 .div-perfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 50px;
     height: 100%;
+}
+
+.div-resumo {
+    display: flex;
+    flex-direction: column;
 }
 
 .div-conteudo-perfil {
@@ -336,14 +349,8 @@ body {
 }
 
 .div-conteudo-perfil .div-resumo {
-    width: 50%;
+    width: 100%;
     margin-left: 20px;
-    padding: 10px;
-    border-right: 1px solid black;
-}
-
-.div-conteudo-perfil .div-estatisticas {
-    width: 50%;
     padding: 10px;
 }
 
@@ -355,7 +362,11 @@ body {
     padding: 20px;
     align-items: flex-start;
     width: 100%;
-    height: 300px;
+    height: 200px;
+}
+
+#manipular_bio {
+    display:none;
 }
 
 .div-resumo-cabecalho {
@@ -376,8 +387,10 @@ body {
 
 .div-bio-conteudo textarea {
     background-color: white;
-    height: 100%;
+    height: 80%;
     width: 100%;
+    overflow: hidden;
+    align-self: flex-start;
     border:none;
     resize: none;
 }
@@ -387,9 +400,10 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
-.div-bio button {
+.div-resumo button {
     align-self: flex-end;
     height: 0;
     width: 0;
@@ -405,7 +419,51 @@ body {
     transition-property: width, opacity, height, background-color, font-size;
 }
 
-.div-bio button:hover {
+.div-resumo button:hover {
     background-color: grey;
     color: white;
+}
+
+.div-secoes-perfil {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    margin: 20px;
+    color: black;
+    border-radius: 500px;
+    overflow: hidden;
+}
+
+.btn-alternar {
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-property: background-color;
+}
+
+
+.btn-alternar.selecionado {
+    background-color: #5C1D6B;
+    color: white;
+}
+
+.div-detalhes {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.div-conteudo-detalhes {
+    background-color: white;
+    color: black;
+}
+
+#div_informacoes {
+    display: none;
 }

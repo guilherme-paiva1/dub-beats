@@ -1,12 +1,15 @@
 //if id na url igual ao id na session storage
-manipularInformacoesUsuario();
+var parametros = new URLSearchParams(window.location.search);
+var id = parametros.get('id');
+
+manipularInformacoesUsuario(id);
 
 //if id na url diferente do id na session storage
 campo_bio.disabled = true;
 function manipularBio() {
     if (campo_bio.disabled == true) {
         campo_bio.disabled = false;
-        btn_salvar.style.height = '100px';
+        btn_salvar.style.height = '50px';
         btn_salvar.style.width = '150px';
         btn_salvar.style.fontSize = '15px';
         btn_salvar.style.opacity = '1';
@@ -57,8 +60,8 @@ function salvarAlteracoes() {
     return false;
 }
 
-function recuperarBio(id) {
-    fetch("/usuarios/recuperarBio", {
+function recuperarInfos(id) {
+    fetch("/usuarios/recuperarInfos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -71,7 +74,13 @@ function recuperarBio(id) {
             console.log(resposta);
 
             resposta.json().then(json => {
+                if (json[0].id_usuario == sessionStorage.ID_USUARIO) {
+                    manipular_bio.style.display = 'flex';
+                }
+                
                 campo_bio.value = json[0].bio;
+                nome_usuario.innerHTML = json[0].nome;
+
             });
 
         } else {
@@ -90,8 +99,40 @@ function recuperarBio(id) {
     return false;
 }
 
-function manipularInformacoesUsuario() {
-    var id = sessionStorage.ID_USUARIO;
-    nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    recuperarBio(id);
+function manipularInformacoesUsuario(id) {
+    recuperarInfos(id);
+}
+
+function mostrarPublicacoes() {
+    var div_publicacoes = document.getElementById("div_publicacoes");
+    var btn_publicacoes = document.getElementById("btn_publicacoes")
+    var div_informacoes = document.getElementById("div_informacoes");
+    var btn_informacoes = document.getElementById("btn_informacoes")
+
+    //manipulação dos botões
+    btn_publicacoes.classList.add("selecionado");
+    btn_informacoes.classList.remove("selecionado");
+
+    //manipulação das divs
+    div_informacoes.style.display = 'none';
+    div_publicacoes.style.display = 'flex';
+
+    //listarPublicacoesDoUsuario();
+}
+
+function mostrarInformacoes() {
+    var div_informacoes = document.getElementById("div_informacoes");
+    var btn_informacoes = document.getElementById("btn_informacoes")
+    var div_publicacoes = document.getElementById("div_publicacoes");
+    var btn_publicacoes = document.getElementById("btn_publicacoes")
+
+    //manipulação dos botões
+    btn_informacoes.classList.add("selecionado");
+    btn_publicacoes.classList.remove("selecionado");
+
+    //manipulação da div
+    div_publicacoes.style.display = 'none';
+    div_informacoes.style.display = 'flex';
+
+    //listarInformacoesDoUsuario();
 }

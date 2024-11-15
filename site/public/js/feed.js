@@ -46,7 +46,6 @@ function listarPublicacoes() {
         }
     }).then(function (resposta) {
         if (resposta.ok) {
-            console.log(resposta);
             
             resposta.json().then(json => {
                 var tamanho_lista = json.length - 1;
@@ -58,12 +57,12 @@ function listarPublicacoes() {
                     var tituloAtual = json[i].titulo;
                     var conteudoAtual = json[i].conteudo;
                     var nomeAtual = json[i].nome;
-                    console.log(`${idAtual}, ${tituloAtual}, ${conteudoAtual}`);
+                    var fkUsuario = json[i].fk_usuario;
                     publicacoes += `
 
                     <div class="div-publicacao">
                         <div class="div-cabecalho-publicacao">
-                            <h3>${nomeAtual} publicou:</h3>
+                            <a href="perfil.html?id=${fkUsuario}"><h3>${nomeAtual}</a> publicou:</h3>
                         </div>
                         <div class="div-conteudo-publicacao">
                             <div class="div-titulo">

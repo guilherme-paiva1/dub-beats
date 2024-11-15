@@ -37,7 +37,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="./perfil.html">Seu Perfil</a>
+                                <a class="dropdown-item" href="" id="link_perfil">Seu Perfil</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -60,23 +60,35 @@
                     <div class="div-bio">
                         <div class="div-resumo-cabecalho">
                             <h1>Bio:</h1>
-                            <span onclick="manipularBio()"><i class="bi bi-pencil"></i></span>
+                            <span onclick="manipularBio()" id="manipular_bio"><i class="bi bi-pencil"></i></span>
                         </div>
                         <div class="div-bio-conteudo">
-                            <textarea 
-                            class="bio" 
-                            disabled
-                            id="campo_bio"
-                            cols="45"
-                            rows="9"
-                            maxlength="405"></textarea>
+                            <textarea class="bio" disabled id="campo_bio" cols="45" rows="10"
+                                maxlength="499"></textarea>
                         </div>
-                        <button onclick="salvarAlteracoes()" id="btn_salvar">Salvar alterações</button>
+                    </div>
+                    <button onclick="salvarAlteracoes()" id="btn_salvar">Salvar alterações</button>
+                </div>
+            </div>
+            <div class="div-secoes-perfil">
+                <div class="btn-alternar selecionado" id="btn_publicacoes" onclick="mostrarPublicacoes()">
+                    <span>Publicações</span>
+                </div>
+                <div class="btn-alternar" id="btn_informacoes" onclick="mostrarInformacoes()">
+                    <span>Informações</span>
+                </div>
+            </div>
+
+            <div class="container secoes">
+                <div id="div_publicacoes" class="div-detalhes">
+                    <div class="div-conteudo-detalhes">
+                        <h1>TESTE Publicações</h1>
                     </div>
                 </div>
-                <div class="div-estatisticas">
-                    <h1></h1>
-                    <span class="bio"></span>
+                <div id="div_informacoes" class="div-detalhes">
+                    <div class="div-conteudo-detalhes">
+                        <h1>TESTE Informações</h1>
+                    </div>
                 </div>
             </div>
         </div>
