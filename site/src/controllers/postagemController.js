@@ -27,8 +27,25 @@ function publicar(req, res) {
 
 }
 
+function curtir(req, res) {
+    var idUsuario = req.body.idUsuarioServer;
+    var idPostagem = req.body.idPostagemServer;
+
+    postagemModel.curtir(idPostagem, idUsuario)
+        .then(
+            function (resultadoCurtir) {
+                res.json(resultadoCurtir);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao curtir! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listar(req, res) {
-    console.log('entrou no controller')
     postagemModel.listar()
         .then(
             function (resultadoListar) {
@@ -45,5 +62,6 @@ function listar(req, res) {
 
 module.exports = {
     publicar,
-    listar
+    listar,
+    curtir
 }

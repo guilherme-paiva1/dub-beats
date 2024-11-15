@@ -73,9 +73,9 @@ function listarPublicacoes() {
                                 </p>
                             </div>
                             <span class="icons-interagir">
-                                <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub">
+                                <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub${idAtual}">
                                 <i class="bi bi-chat" onclick="abrirInputComentario(${idAtual})"></i>
-                                <i class="bi bi-heart" onclick="curtir(${idAtual, id_usuario})" id="curtir_pub"></i>
+                                <i class="bi bi-heart" onclick="curtir(${idAtual}, ${id_usuario})" id="curtir_pub${idAtual}"></i>
                             </span>
                         </div>
                         <div class="div-interagir">
@@ -108,14 +108,47 @@ function listarPublicacoes() {
 }
 
 
-function curtir() {
+function curtir(idPostagem, idUsuario) {
+    var textoCurtir = `curtir_pub${idPostagem}`;
+    var curtir_pub = document.getElementById(textoCurtir);
+
     var listaClassesDOM = curtir_pub.classList;
     var listaClasses = Array.from(listaClassesDOM);
+    
     var incluiVazio = listaClasses.includes('bi-heart');
 
     if (incluiVazio) {
         curtir_pub.classList.remove('bi-heart');
-        curtir_pub.classList.add('bi-heart-fill');
+        
+        fetch("/postagens/curtir", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify( {
+                idPostagemServer: idPostagem,
+                idUsuarioServer: idUsuario
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    curtir_pub.classList.add('bi-heart-fill');
+                });
+                
+            } else {
+    
+                console.log("Houve um erro ao curtir, tente novamente mais tarde");
+    
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+    
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    
+        return false;
     } else {
         curtir_pub.classList.remove('bi-heart-fill');
         curtir_pub.classList.add('bi-heart');

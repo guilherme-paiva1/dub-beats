@@ -198,7 +198,6 @@ body {
     flex-direction: column;
     cursor: pointer;
     pointer-events: auto;
-
 }
 
 .div-acoes .botao {
@@ -215,6 +214,7 @@ body {
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
     transition-property: width, opacity, display, border-radius, font-size;
+    border: 1px solid black;
 
     .texto {
         opacity: 0;

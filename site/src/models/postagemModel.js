@@ -16,7 +16,9 @@ function listar() {
             p.id_postagem AS id_postagem, 
             p.titulo AS titulo, 
             p.conteudo AS conteudo, 
-            p.fk_usuario AS fk_usuario
+            p.fk_usuario AS fk_usuario,
+            (SELECT count(id_curtida) FROM Curtida
+                WHERE fk_postagem = p.id_postagem) AS qtd_curtida 
         FROM Postagem AS p
         JOIN Usuario AS u
             ON id_usuario = fk_usuario;
@@ -25,7 +27,17 @@ function listar() {
     return database.executar(instrucaoSql);
 }
 
+function curtir(idPostagem, idUsuario) {
+    var instrucaoSql = `
+        INSERT INTO Curtida (fk_postagem, fk_usuario) VALUES
+            (${idPostagem}, ${idUsuario});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     publicar,
-    listar
+    listar,
+    curtir
 };
