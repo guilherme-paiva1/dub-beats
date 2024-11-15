@@ -139,11 +139,12 @@ function curtir(idPostagem, idUsuario) {
                     var texto = `num_curtidas${idPostagem}`;
                     var elementoHTML = document.getElementById(texto);
                     var elementoHTMLCurtidas = elementoHTML.innerHTML;
-                    
+
                     var num_curtidas = Number(elementoHTMLCurtidas);
                     num_curtidas++;
 
                     curtir_pub.classList.add('bi-heart-fill');
+                    curtir_pub.classList.remove('bi-heart');
                     elementoHTML.innerHTML = num_curtidas;
                 });
                 
@@ -162,8 +163,46 @@ function curtir(idPostagem, idUsuario) {
     
         return false;
     } else {
-        curtir_pub.classList.remove('bi-heart-fill');
-        curtir_pub.classList.add('bi-heart');
+
+        fetch("/curtidas/descurtir", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify( {
+                idPostagemServer: idPostagem,
+                idUsuarioServer: idUsuario
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    var texto = `num_curtidas${idPostagem}`;
+                    var elementoHTML = document.getElementById(texto);
+                    var elementoHTMLCurtidas = elementoHTML.innerHTML;
+
+                    var num_curtidas = Number(elementoHTMLCurtidas);
+                    num_curtidas--;
+
+                    curtir_pub.classList.remove('bi-heart-fill');
+                    curtir_pub.classList.add('bi-heart');
+                    elementoHTML.innerHTML = num_curtidas;
+                });
+                
+            } else {
+    
+                console.log("Houve um erro ao curtir, tente novamente mais tarde");
+    
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+    
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    
+        return false;
+
     }
 }
 
