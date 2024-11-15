@@ -16,12 +16,8 @@ function publicar() {
     }).then(function (resposta) {
         if (resposta.ok) {
             console.log(resposta);
-
-            resposta.json().then(json => {
-                alert("Publicado com sucesso!")
-                location.reload();
-            });
-
+            alert("Publicado com sucesso!")
+            location.reload();
         } else {
 
             console.log("Houve um erro ao publicar, tente novamente mais tarde");
@@ -46,13 +42,12 @@ function listarPublicacoes() {
         }
     }).then(function (resposta) {
         if (resposta.ok) {
-            
+
             resposta.json().then(json => {
                 var tamanho_lista = json.length - 1;
                 var publicacoes = '';
 
-                for(var i = tamanho_lista; i >= 0; i--) {
-                    console.log('entrou no for')
+                for (var i = tamanho_lista; i >= 0; i--) {
                     var idAtual = json[i].id_postagem;
                     var tituloAtual = json[i].titulo;
                     var conteudoAtual = json[i].conteudo;
@@ -92,7 +87,7 @@ function listarPublicacoes() {
                 }
                 //console.log(publicacoes)
                 div_feed.innerHTML = publicacoes;
-                
+
             });
 
         } else {
@@ -118,49 +113,46 @@ function curtir(idPostagem, idUsuario) {
 
     var listaClassesDOM = curtir_pub.classList;
     var listaClasses = Array.from(listaClassesDOM);
-    
+
     var incluiVazio = listaClasses.includes('bi-heart');
 
     if (incluiVazio) {
         curtir_pub.classList.remove('bi-heart');
-        
+
         fetch("/postagens/curtir", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify( {
+            body: JSON.stringify({
                 idPostagemServer: idPostagem,
                 idUsuarioServer: idUsuario
             })
         }).then(function (resposta) {
             if (resposta.ok) {
-                resposta.json().then(json => {
-                    var texto = `num_curtidas${idPostagem}`;
-                    var elementoHTML = document.getElementById(texto);
-                    var elementoHTMLCurtidas = elementoHTML.innerHTML;
+                var texto = `num_curtidas${idPostagem}`;
+                var elementoHTML = document.getElementById(texto);
+                var elementoHTMLCurtidas = elementoHTML.innerHTML;
 
-                    var num_curtidas = Number(elementoHTMLCurtidas);
-                    num_curtidas++;
+                var num_curtidas = Number(elementoHTMLCurtidas);
+                num_curtidas++;
 
-                    curtir_pub.classList.add('bi-heart-fill');
-                    curtir_pub.classList.remove('bi-heart');
-                    elementoHTML.innerHTML = num_curtidas;
-                });
-                
+                curtir_pub.classList.add('bi-heart-fill');
+                curtir_pub.classList.remove('bi-heart');
+                elementoHTML.innerHTML = num_curtidas;
             } else {
-    
+
                 console.log("Houve um erro ao curtir, tente novamente mais tarde");
-    
+
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
             }
-    
+
         }).catch(function (erro) {
             console.log(erro);
         })
-    
+
         return false;
     } else {
 
@@ -169,38 +161,35 @@ function curtir(idPostagem, idUsuario) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify( {
+            body: JSON.stringify({
                 idPostagemServer: idPostagem,
                 idUsuarioServer: idUsuario
             })
         }).then(function (resposta) {
             if (resposta.ok) {
-                resposta.json().then(json => {
-                    var texto = `num_curtidas${idPostagem}`;
-                    var elementoHTML = document.getElementById(texto);
-                    var elementoHTMLCurtidas = elementoHTML.innerHTML;
+                var texto = `num_curtidas${idPostagem}`;
+                var elementoHTML = document.getElementById(texto);
+                var elementoHTMLCurtidas = elementoHTML.innerHTML;
 
-                    var num_curtidas = Number(elementoHTMLCurtidas);
-                    num_curtidas--;
+                var num_curtidas = Number(elementoHTMLCurtidas);
+                num_curtidas--;
 
-                    curtir_pub.classList.remove('bi-heart-fill');
-                    curtir_pub.classList.add('bi-heart');
-                    elementoHTML.innerHTML = num_curtidas;
-                });
-                
+                curtir_pub.classList.remove('bi-heart-fill');
+                curtir_pub.classList.add('bi-heart');
+                elementoHTML.innerHTML = num_curtidas;
+
             } else {
-    
                 console.log("Houve um erro ao curtir, tente novamente mais tarde");
-    
+
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
             }
-    
+
         }).catch(function (erro) {
             console.log(erro);
         })
-    
+
         return false;
 
     }
@@ -212,25 +201,22 @@ function listarCurtidas(idPostagem, idUsuario) {
         headers: {
             "Content-Type": "application/json"
         },
-        body:JSON.stringify( {
+        body: JSON.stringify({
             idPostagemServer: idPostagem,
             idUsuarioServer: idUsuario
         })
     }).then(function (resposta) {
         if (resposta.ok) {
-            
+
             resposta.json().then(json => {
-                console.log(json);
                 if (json[0]) {
                     var textoCurtir = `curtir_pub${idPostagem}`;
                     var curtir_pub = document.getElementById(textoCurtir);
-                    
+
                     curtir_pub.classList.remove("bi-heart");
                     curtir_pub.classList.add("bi-heart-fill");
-                } else {
-                    console.log('nao curtiu');
                 }
-                
+
             });
 
         } else {
@@ -249,6 +235,8 @@ function listarCurtidas(idPostagem, idUsuario) {
     return false;
 }
 
-function abrirInputComentario() {
+function abrirInputComentario(idPostagem) {
+    var texto = `comentar_pub${idPostagem}`;
+    var comentar_pub = document.getElementById(texto);
     comentar_pub.disabled = false;
 }
