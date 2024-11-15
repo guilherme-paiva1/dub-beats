@@ -18,6 +18,7 @@ var app = express();
 var indexRouter = require("./routes/index");
 var usuarioRouter = require("./routes/usuarios");
 var postagensRouter = require("./routes/postagens");
+var curtidasRouter = require("./routes/curtidas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/postagens", postagensRouter);
+app.use("/curtidas", curtidasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -17,8 +17,7 @@ function listar() {
             p.titulo AS titulo, 
             p.conteudo AS conteudo, 
             p.fk_usuario AS fk_usuario,
-            (SELECT count(id_curtida) FROM Curtida
-                WHERE fk_postagem = p.id_postagem) AS qtd_curtida 
+            (SELECT count(*) FROM Curtida WHERE fk_postagem = id_postagem) AS qtd_curtida 
         FROM Postagem AS p
         JOIN Usuario AS u
             ON id_usuario = fk_usuario;

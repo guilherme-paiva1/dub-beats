@@ -58,6 +58,7 @@ function listarPublicacoes() {
                     var conteudoAtual = json[i].conteudo;
                     var nomeAtual = json[i].nome;
                     var fkUsuario = json[i].fk_usuario;
+                    var qtdCurtidasAtual = json[i].qtd_curtida
                     publicacoes += `
 
                     <div class="div-publicacao">
@@ -75,16 +76,19 @@ function listarPublicacoes() {
                             <span class="icons-interagir">
                                 <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub${idAtual}">
                                 <i class="bi bi-chat" onclick="abrirInputComentario(${idAtual})"></i>
+                                <span class="qtd-curtidas">
                                 <i class="bi bi-heart" onclick="curtir(${idAtual}, ${id_usuario})" id="curtir_pub${idAtual}"></i>
+                                <span id="num_curtidas${idAtual}"</span> ${qtdCurtidasAtual} </span>
                             </span>
                         </div>
                         <div class="div-interagir">
-                            <span class="comentarios-interagir" onclick="listarComentarios()" id="comentarios_publicacao1">
+                            <span class="comentarios-interagir" onclick="listarComentarios()" id="comentarios_publicacao${idAtual}">
                                 Ver comentários dessa publicação
                             </span>
                         </div>
                     </div>
                     `;
+                    listarCurtidas(idAtual, id_usuario);
                 }
                 //console.log(publicacoes)
                 div_feed.innerHTML = publicacoes;
@@ -132,7 +136,15 @@ function curtir(idPostagem, idUsuario) {
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(json => {
+                    var texto = `num_curtidas${idPostagem}`;
+                    var elementoHTML = document.getElementById(texto);
+                    var elementoHTMLCurtidas = elementoHTML.innerHTML;
+                    
+                    var num_curtidas = Number(elementoHTMLCurtidas);
+                    num_curtidas++;
+
                     curtir_pub.classList.add('bi-heart-fill');
+                    elementoHTML.innerHTML = num_curtidas;
                 });
                 
             } else {
@@ -153,6 +165,49 @@ function curtir(idPostagem, idUsuario) {
         curtir_pub.classList.remove('bi-heart-fill');
         curtir_pub.classList.add('bi-heart');
     }
+}
+
+function listarCurtidas(idPostagem, idUsuario) {
+    fetch("/curtidas/listar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify( {
+            idPostagemServer: idPostagem,
+            idUsuarioServer: idUsuario
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            
+            resposta.json().then(json => {
+                console.log(json);
+                if (json[0]) {
+                    var textoCurtir = `curtir_pub${idPostagem}`;
+                    var curtir_pub = document.getElementById(textoCurtir);
+                    
+                    curtir_pub.classList.remove("bi-heart");
+                    curtir_pub.classList.add("bi-heart-fill");
+                } else {
+                    console.log('nao curtiu');
+                }
+                
+            });
+
+        } else {
+
+            console.log("Houve um erro ao confirmar sua curtida, tente novamente mais tarde");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
 }
 
 function abrirInputComentario() {
