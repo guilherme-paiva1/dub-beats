@@ -19,6 +19,7 @@ var indexRouter = require("./routes/index");
 var usuarioRouter = require("./routes/usuarios");
 var postagensRouter = require("./routes/postagens");
 var curtidasRouter = require("./routes/curtidas");
+var comentariosRouter = require("./routes/comentarios");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +31,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/postagens", postagensRouter);
 app.use("/curtidas", curtidasRouter);
+app.use("/comentarios", comentariosRouter);
 
 app.listen(PORTA_APP,"192.168.1.109", function () {
     console.log(`

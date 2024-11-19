@@ -70,8 +70,8 @@ function listarPublicacoes() {
                             </div>
                             <span class="icons-interagir">
                                 <div class="div-comentario">
-                                    <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub${idAtual}">
-                                    <i class="bi bi-arrow-right-circle-fill escondido" id="btn_enviar${idAtual}"></i>
+                                    <input type="text" disabled id="comentar_pub${idAtual}">
+                                    <i class="bi bi-arrow-right-circle-fill escondido" id="btn_enviar${idAtual}" onclick="enviarComentario(${idAtual})"></i>
                                 </div>
                                 <div class="div-icones">
                                     <i class="bi bi-chat" id="icone_chat${idAtual}" onclick="abrirInputComentario(${idAtual})"></i>
@@ -266,4 +266,39 @@ function abrirInputComentario(idPostagem) {
         inputComentario.style.width = '100%';
     }
 
+}
+
+function enviarComentario(idPostagem) {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var textoInput = `comentar_pub${idPostagem}`;
+    var comentarioHTML = document.getElementById(textoInput);
+    var conteudoComentario = comentarioHTML.value; 
+
+    fetch("/comentarios/comentar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idPostagemServer: idPostagem,
+            idUsuarioServer: idUsuario,
+            conteudoServer: conteudoComentario
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            abrirInputComentario(idPostagem);
+            listarComentarios(idPostagem);
+        } else {
+            console.log("Houve um erro ao comentar, tente novamente mais tarde");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
 }
