@@ -60,8 +60,26 @@ function listar(req, res) {
         );
 }
 
+function listarPorUsuario(req, res) {
+    var idUsuario = req.body.idServer;
+
+    postagemModel.listarPorUsuario(idUsuario)
+    .then(
+        function (resultadoListar) {
+            res.json(resultadoListar);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao listar por usuário! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     publicar,
     listar,
+    listarPorUsuario,
     curtir
 }
