@@ -83,9 +83,10 @@ function listarPublicacoes() {
                             </span>
                         </div>
                         <div class="div-interagir">
-                            <span class="comentarios-interagir" onclick="listarComentarios()" id="comentarios_publicacao${idAtual}">
+                            <span class="comentarios-interagir" onclick="listarComentarios(${idAtual})" id="texto_comentario${idAtual}">
                                 Ver comentários dessa publicação
                             </span>
+                            <div class="div-comentarios" id="comentarios_publicacao${idAtual}"></div>
                         </div>
                     </div>
                     `;
@@ -249,6 +250,7 @@ function abrirInputComentario(idPostagem) {
     var btnComentario = document.getElementById(textoBtn);
     var icone = document.getElementById(textoIcone);
 
+    inputComentario.value = '';
     if (inputComentario.disabled == true) {
         icone.classList.remove("bi-chat");
         icone.classList.add("bi-x-circle");
@@ -290,6 +292,63 @@ function enviarComentario(idPostagem) {
             listarComentarios(idPostagem);
         } else {
             console.log("Houve um erro ao comentar, tente novamente mais tarde");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function listarComentarios(idPostagem) {
+    fetch("/comentarios/listar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idPostagemServer: idPostagem
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            document.getElementById(`texto_comentario${idPostagem}`).innerHTML = '';
+            var elementoHTML = document.getElementById(`comentarios_publicacao${idPostagem}`);
+
+            resposta.json().then(json => {
+                if(json.length >= 1) {
+                    var tamanho_lista = json.length - 1;
+                    var comentarios = '';
+    
+                    for (var i = tamanho_lista; i >= 0; i--) {
+                        var idAtual = json[i].id_comentario;
+                        var fkUsuario = json[i].fk_usuario;
+                        var conteudoAtual = json[i].conteudo;
+                        var nomeAtual = json[i].nome;
+                        comentarios += `
+                        <div class="div-comentario-lista">
+                            <div class="div-cabecalho-publicacao">
+                                <a href="perfil.html?id=${fkUsuario}"><h4>${nomeAtual}</a>:</h4>
+                            </div>
+                            <div class="conteudo-comentario">
+                                <span>${conteudoAtual}</span>
+                            </div>
+                        </div>
+                        `;
+                    }
+                    //console.log(comentarios)
+                    elementoHTML.innerHTML = comentarios;
+                } else {
+                    elementoHTML.innerHTML = 'Ainda não há comentários!';
+                }
+
+            });
+        } else {
+            console.log("Houve um erro ao listar comentários, tente novamente mais tarde");
 
             resposta.text().then(texto => {
                 console.error(texto);

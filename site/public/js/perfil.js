@@ -164,7 +164,7 @@ function listarPublicacoesDoUsuario() {
 
                     <div class="div-publicacao">
                         <div class="div-cabecalho-publicacao">
-                            <a><h3>${nomeAtual}</a> publicou:</h3>
+                            <a href="perfil.html?id=${fkUsuario}"><h3>${nomeAtual}</a> publicou:</h3>
                         </div>
                         <div class="div-conteudo-publicacao">
                             <div class="div-titulo">
@@ -175,17 +175,24 @@ function listarPublicacoesDoUsuario() {
                                 </p>
                             </div>
                             <span class="icons-interagir">
-                                <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub${idAtual}">
-                                <i class="bi bi-chat" onclick="abrirInputComentario(${idAtual})"></i>
-                                <span class="qtd-curtidas">
-                                <i class="bi bi-heart" onclick="curtir(${idAtual}, ${id_usuario})" id="curtir_pub${idAtual}"></i>
-                                <span id="num_curtidas${idAtual}"</span> ${qtdCurtidasAtual} </span>
+                                <div class="div-comentario">
+                                    <input type="text" disabled id="comentar_pub${idAtual}">
+                                    <i class="bi bi-arrow-right-circle-fill escondido" id="btn_enviar${idAtual}" onclick="enviarComentario(${idAtual})"></i>
+                                </div>
+                                <div class="div-icones">
+                                    <i class="bi bi-chat" id="icone_chat${idAtual}" onclick="abrirInputComentario(${idAtual})"></i>
+                                    <span class="qtd-curtidas">
+                                        <i class="bi bi-heart" onclick="curtir(${idAtual}, ${id_usuario})" id="curtir_pub${idAtual}"></i>
+                                        <span id="num_curtidas${idAtual}"</span> ${qtdCurtidasAtual} 
+                                    </span>
+                                </div>
                             </span>
                         </div>
                         <div class="div-interagir">
-                            <span class="comentarios-interagir" onclick="listarComentarios()" id="comentarios_publicacao${idAtual}">
+                            <span class="comentarios-interagir" onclick="listarComentarios(${idAtual})" id="texto_comentario${idAtual}">
                                 Ver comentários dessa publicação
                             </span>
+                            <div class="div-comentarios" id="comentarios_publicacao${idAtual}"></div>
                         </div>
                     </div>
                     `;

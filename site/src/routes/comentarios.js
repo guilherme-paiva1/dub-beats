@@ -5,6 +5,10 @@ var comentarioController = require("../controllers/comentarioController");
 
 router.post("/comentar", function (req, res) {
     comentarioController.comentar(req, res);
-})
+});
+
+router.post("/listar", function (req, res) {
+    comentarioController.listar(req, res);
+});
 
 module.exports = router;

@@ -360,6 +360,21 @@ body {
     text-decoration: underline;
 }
 
+.div-comentario-lista {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid black ;
+}
+
+.div-comentarios {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 /*------------ PERFIL ----------------*/
 .container {
     height: 100%;

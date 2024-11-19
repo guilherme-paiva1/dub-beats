@@ -29,7 +29,31 @@ function comentar(req, res) {
 
 }
 
+function listar(req, res) {
+    var idPostagem = req.body.idPostagemServer;
+
+    if (idPostagem == undefined) {
+        res.status(400).send("A postagem está indefinida!");
+    } else {
+        comentarioModel.listar(idPostagem)
+            .then(
+                function (resultadoComentar) {
+                    console.log(resultadoComentar);
+                    res.json(resultadoComentar);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao comentar! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 
 module.exports = {
-    comentar
+    comentar, 
+    listar
 }
