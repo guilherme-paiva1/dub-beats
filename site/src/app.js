@@ -31,7 +31,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/postagens", postagensRouter);
 app.use("/curtidas", curtidasRouter);
 
-app.listen(PORTA_APP, function () {
+app.listen(PORTA_APP,"192.168.1.109", function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
     ##   ##  ##       ##  ##            ## ##     ####      ##      ####             ##  ##     ##         ##  

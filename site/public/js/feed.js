@@ -69,11 +69,17 @@ function listarPublicacoes() {
                                 </p>
                             </div>
                             <span class="icons-interagir">
-                                <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub${idAtual}">
-                                <i class="bi bi-chat" onclick="abrirInputComentario(${idAtual})"></i>
-                                <span class="qtd-curtidas">
-                                <i class="bi bi-heart" onclick="curtir(${idAtual}, ${id_usuario})" id="curtir_pub${idAtual}"></i>
-                                <span id="num_curtidas${idAtual}"</span> ${qtdCurtidasAtual} </span>
+                                <div class="div-comentario">
+                                    <input type="text" disabled onclick="abrirInputComentario(${idAtual})" id="comentar_pub${idAtual}">
+                                    <i class="bi bi-arrow-right-circle-fill escondido" id="btn_enviar${idAtual}"></i>
+                                </div>
+                                <div class="div-icones">
+                                    <i class="bi bi-chat" id="icone_chat${idAtual}" onclick="abrirInputComentario(${idAtual})"></i>
+                                    <span class="qtd-curtidas">
+                                        <i class="bi bi-heart" onclick="curtir(${idAtual}, ${id_usuario})" id="curtir_pub${idAtual}"></i>
+                                        <span id="num_curtidas${idAtual}"</span> ${qtdCurtidasAtual} 
+                                    </span>
+                                </div>
                             </span>
                         </div>
                         <div class="div-interagir">
@@ -236,7 +242,28 @@ function listarCurtidas(idPostagem, idUsuario) {
 }
 
 function abrirInputComentario(idPostagem) {
-    var texto = `comentar_pub${idPostagem}`;
-    var comentar_pub = document.getElementById(texto);
-    comentar_pub.disabled = false;
+    var textoInput = `comentar_pub${idPostagem}`;
+    var textoBtn = `btn_enviar${idPostagem}`;
+    var textoIcone = `icone_chat${idPostagem}`;
+    var inputComentario = document.getElementById(textoInput);
+    var btnComentario = document.getElementById(textoBtn);
+    var icone = document.getElementById(textoIcone);
+
+    if (inputComentario.disabled == true) {
+        icone.classList.remove("bi-chat");
+        icone.classList.add("bi-x-circle");
+        inputComentario.disabled = false;
+        inputComentario.style.width = '95%';
+        setTimeout(function () {
+            btnComentario.style.display = 'flex';
+        }, 300);
+
+    } else {
+        icone.classList.remove("bi-x-circle");
+        icone.classList.add("bi-chat");
+        inputComentario.disabled = true;
+        btnComentario.style.display = 'none';
+        inputComentario.style.width = '100%';
+    }
+
 }
