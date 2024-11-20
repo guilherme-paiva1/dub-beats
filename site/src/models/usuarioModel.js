@@ -1,3 +1,4 @@
+const { listarEstatisticas } = require("../controllers/usuarioController");
 var database = require("../database/config")
 
 function autenticar(email, senha) {
@@ -10,24 +11,17 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha) {   
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     var instrucaoSql = `
         INSERT INTO Usuario (nome, email, senha) VALUES 
             ('${nome}', '${email}', MD5('${senha}'));
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 
-    //retorna a execução no banco de dados
     return database.executar(instrucaoSql);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function atualizarBio(bio, id) {   
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     var instrucaoSql = `
         UPDATE Usuario 
             SET bio = '${bio}' 
@@ -37,15 +31,25 @@ function atualizarBio(bio, id) {
     return database.executar(instrucaoSql);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function recuperarInfos(id) {   
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     var instrucaoSql = `
         SELECT id_usuario, nome, bio 
             FROM Usuario
                 WHERE id_usuario = ${id};
     `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function listarEstatisticasModel(id) {
+    var instrucaoSql = `
+    SELECT
+	    (SELECT count(id_curtida) FROM Curtida WHERE fk_usuario = ${id}) AS qtd_curtida,
+        (SELECT count(id_comentario) FROM Comentario WHERE fk_usuario = ${id}) AS qtd_comentario,
+        (SELECT count(id_postagem) FROM Postagem WHERE fk_usuario = ${id}) AS qtd_postagem; 
+    `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -54,5 +58,6 @@ module.exports = {
     autenticar,
     cadastrar,
     atualizarBio,
-    recuperarInfos
+    recuperarInfos,
+    listarEstatisticasModel
 };

@@ -20,4 +20,8 @@ router.post("/recuperarInfos", function (req, res) {
     usuarioController.recuperarInfos(req, res);
 });
 
+router.post("/listarEstatisticasUsuario", function (req, res) {
+    usuarioController.listarEstatisticasDoUsuario(req, res);
+});
+
 module.exports = router;

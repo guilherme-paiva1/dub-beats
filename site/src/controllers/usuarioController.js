@@ -115,9 +115,32 @@ function recuperarInfos(req, res) {
             );
     }
 }
+
+function listarEstatisticasDoUsuario(req, res) {
+    var idUsuario = req.body.idServer;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else {
+        usuarioModel.listarEstatisticasModel(idUsuario)
+            .then(
+                function (resultadoRecuperar) {
+                    console.log("recuperou o resultado:");
+                    res.json(resultadoRecuperar);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao recuperar as informações! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
 module.exports = {
     autenticar,
     cadastrar,
     atualizarBio,
-    recuperarInfos
+    recuperarInfos,
+    listarEstatisticasDoUsuario
 }

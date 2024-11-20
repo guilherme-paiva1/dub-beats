@@ -84,7 +84,43 @@
                 </div>
                 <div id="div_informacoes" class="div-detalhes">
                     <div class="div-conteudo-detalhes">
-                        <h1>TESTE Informações</h1>
+                        <div class="div-dashboard">
+                            <div class="div-kpi">
+                                <div class="div-card">
+                                    <h5>Quantidade de Interações</h5>
+                                    <hr>
+                                    <span id="span_qtdInt">0</span>
+                                </div>
+                                <div class="div-card">
+                                    <h5>Quantidade de Publicações</h5>
+                                    <hr>
+                                    <span id="span_qtdPub">0</span>
+                                </div>
+                                <div class="div-card">
+                                    <h5>Status</h5>
+                                    <hr>
+                                    <span id="span_status">Noob</span>
+                                </div>
+                            </div>
+
+                            <div class="div-corpo">
+                                <div class="div-infos">
+                                    <canvas id="grafico_relacao"></canvas>
+                                </div>
+                                <div class="div-infos metrica">
+                                    <span>Começo: <br> 
+                                        <b>Curioso</b> </span>
+                                    <span>Entre 11 e 20 interações + 5 publicações: <br> 
+                                        <b>Noob</b> </span>
+                                    <span>Entre 21 e 30 interações + 10 publicações: <br> 
+                                        <b>Baby Banger</b> </span>
+                                    <span>Entre 31 e 50 interações + 15 publicações: <br> 
+                                        <b>Headbanger</b> </span>
+                                    <span>De 51 em diante + 30 publicações: <br>
+                                        <b> Headbanger das trevas</b> </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,6 +129,7 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
