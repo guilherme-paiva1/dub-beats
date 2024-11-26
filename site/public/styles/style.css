@@ -77,6 +77,30 @@ body {
     cursor: pointer;
 }
 
+#span_retorno_login, #span_retorno_cadastro {
+    text-align: center;
+    text-decoration: none;
+    cursor:text;
+    color: black;
+    font-weight: bold;
+}
+
+.modal-footer .btn-principal {
+    background-color: black;
+    color: white;
+}
+
+.modal-footer .btn-principal:hover {
+    background-color: #1A1A1A;
+}
+
+.modal-footer .btn-fechar {
+    border: 1px solid black
+}
+
+.modal-footer .btn-fechar:hover {
+    background-color: #F2F2F2;
+}
 /*-------------- BANNER INDEX --------------*/
 
 .banner {

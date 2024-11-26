@@ -1,6 +1,4 @@
 function entrar() {
-    //aguardar();
-
     var emailVar = input_email_login.value;
     var senhaVar = input_senha_login.value;
 
@@ -23,7 +21,7 @@ function entrar() {
         })
     }).then(function (resposta) {
         if (resposta.ok) {
-            console.log(resposta);
+            aparecerMensagemLogin('Login realizado com sucesso! Indo para o feed...');
 
             resposta.json().then(json => {
                 console.log(json);
@@ -38,17 +36,16 @@ function entrar() {
             });
 
         } else {
-
-            console.log("Houve um erro ao tentar realizar o login!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
+            aparecerMensagemLogin('Login ou senha incorretos!');           
         }
 
     }).catch(function (erro) {
-        console.log(erro);
+        console.warn(erro);
     })
 
     return false;
+}
+
+function aparecerMensagemLogin(texto) {
+    span_retorno_login.innerHTML = texto;
 }

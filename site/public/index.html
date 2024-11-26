@@ -58,18 +58,19 @@
                 </div>
                 <div class="modal-body" id="body_login">
                     <div class="mb-3">
-                        <label for="input_email" class="form-label">Email</label>
+                        <label for="input_email_login" class="form-label">Email</label>
                         <input type="email" class="form-control" id="input_email_login" placeholder="email@exemplo.com">
                     </div>
                     <div class="mb-3">
-                        <label for="input_senha" class="form-label">Senha</label>
+                        <label for="input_senha_login" class="form-label">Senha</label>
                         <input type="password" class="form-control" id="input_senha_login"></input>
                     </div>
+                    <span id="span_retorno_login"></span>
                     <button onclick="exibirCadastro()">Não tem cadastro? <br><span>Cadastre-se</span></button>
                 </div>
                 <div class="modal-footer" id="footer_login">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="entrar()">Entrar</button>
+                    <button type="button" class="btn btn-fechar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-principal" onclick="entrar()">Entrar</button>
                 </div>
 
                 <!--Modal de Cadastro-->
@@ -79,28 +80,28 @@
                 </div>
                 <div class="modal-body unactive" id="body_cadastro">
                     <div class="mb-3">
-                        <label for="input_nome" class="form-label">Nome</label>
+                        <label for="input_nome_cadastro" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="input_nome_cadastro" placeholder="Seu nome">
                     </div>
                     <div class="mb-3">
-                        <label for="input_email" class="form-label">Email</label>
+                        <label for="input_email_cadastro" class="form-label">Email</label>
                         <input type="email" class="form-control" id="input_email_cadastro"
                             placeholder="email@exemplo.com">
                     </div>
                     <div class="mb-3">
-                        <label for="input_senha" class="form-label">Senha</label>
+                        <label for="input_senha_cadastro" class="form-label">Senha</label>
                         <input type="password" class="form-control" id="input_senha_cadastro"></input>
                     </div>
                     <div class="mb-3">
-                        <label for="input_senha" class="form-label">Confirmar senha</label>
+                        <label for="input_confirmar_senha_cadastro" class="form-label">Confirmar senha</label>
                         <input type="password" class="form-control" id="input_confirmar_senha_cadastro"></input>
                     </div>
                     <span id="span_retorno_cadastro"></span>
                     <button onclick="exibirLogin()">Já tem conta? <br><span>Entrar</span></button>
                 </div>
                 <div class="modal-footer unactive" id="footer_cadastro">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
+                    <button type="button" class="btn btn-fechar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-principal" onclick="cadastrar()">Cadastrar</button>
                 </div>
             </div>
         </div>

@@ -1,44 +1,31 @@
 function cadastrar() {
-  // aguardar();
-
-  //Recupere o valor da nova input pelo nome do id
-  // Agora vá para o método fetch logo abaixo
   var nomeVar = input_nome_cadastro.value;
   var emailVar = input_email_cadastro.value;
   var senhaVar = input_senha_cadastro.value;
   var confirmacaoSenhaVar = input_confirmar_senha_cadastro.value;
 
   // Verificando se há algum campo em branco
-  if (
-    nomeVar == "" ||
-    emailVar == "" ||
-    senhaVar == "" ||
-    confirmacaoSenhaVar == ""
-  ) {
-    span_situacao.innerHTML =
-      "Preencha todos os campos para continuar!";
+  if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+    aparecerMensagem("Todos os campos devem estar preenchidos!");
     return false;
-  } else {
-    sumirMensagem();
+  } 
+
+  if (!verificarSenha(senhaVar)) { 
+    aparecerMensagem('A senha precisa ter ao menos 1 caractere especial e 1 número!');
+    return false;
   }
 
-  // Enviando o valor da nova input
-  //fetch = buscar
+  if(!verificarEmail(emailVar)) {
+    aparecerMensagem('O email deve ser válido! (Não aceitamos emails institucionais, apenas emails pessoais)');
+    return false;
+  }
+
   fetch("/usuarios/cadastrar", {
     method: "POST",
     headers: {
-      //content type = tipo de conteúdo
       "Content-Type": "application/json",
     },
-    //body = conteúdo dessa requisição
-    //req é onde vamos acessar esse body
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
-
-      // cada chave é um 'apelido' para um índice
-      //dentro de um json, antes do : -> é chave,
-      // depois dos : -> é valor
       nomeServer: nomeVar,
       emailServer: emailVar,
       senhaServer: senhaVar
@@ -52,6 +39,8 @@ function cadastrar() {
         aparecerMensagem("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
         setTimeout(() => {
+          limparFormulario();
+          sumirMensagem();
           exibirLogin();
         }, "2000");
 
@@ -73,4 +62,64 @@ function sumirMensagem() {
 
 function aparecerMensagem(texto) {
   span_retorno_cadastro.innerHTML = texto;
+}
+
+function verificarSenha(senha) {
+  var incluiEspecial = 
+    senha.includes('!') ||
+    senha.includes('@') ||
+    senha.includes('#') ||
+    senha.includes('$') ||
+    senha.includes('%') ||
+    senha.includes('&') ||
+    senha.includes('*')
+  ;  
+
+  var incluiNumero = 
+    senha.includes('0') ||
+    senha.includes('1') ||
+    senha.includes('2') ||
+    senha.includes('3') ||
+    senha.includes('5') ||
+    senha.includes('6') ||
+    senha.includes('7') ||
+    senha.includes('8') ||
+    senha.includes('9') 
+  ;
+
+  if (incluiEspecial && incluiNumero) {
+    return true;
+  }
+
+  return false;
+}
+
+function verificarEmail(email) {
+  var temArroba = email.includes('@');  
+
+  var terminaCerto = 
+    email.endsWith('.com') ||  
+    email.endsWith('.net') ||
+    email.endsWith('.me') ||
+    email.endsWith('.br') ||
+    email.endsWith('.it') ||
+    email.endsWith('.fr') ||
+    email.endsWith('.uk') ||
+    email.endsWith('.de') ||
+    email.endsWith('.ru')
+  ;
+
+  if (temArroba && terminaCerto) {
+    return true;
+  }
+
+  return false;
+}
+
+function limparFormulario() {
+  input_nome_cadastro.value = '';
+  input_email_cadastro.value = '';
+  input_senha_cadastro.value = '';
+  input_confirmar_senha_cadastro.value = '';
+
 }
