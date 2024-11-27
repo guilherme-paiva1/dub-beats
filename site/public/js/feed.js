@@ -3,6 +3,18 @@ function publicar() {
     var titulo = input_titulo.value;
     var conteudo = input_conteudo.value;
 
+    var tamanhoConteudoValido = verificarTamanhoConteudo();
+    var tamanhoTituloValido = verificarTamanhoTitulo();
+    if (!tamanhoConteudoValido || !tamanhoTituloValido) {
+        alert ('Respeite o limite de caracteres!');
+        return false;
+    }
+
+    if (titulo == '' || conteudo == '') {
+        alert ('As publicações precisam ter título e conteúdo!');
+        return false;
+    }
+
     fetch("/postagens/publicar", {
         method: "POST",
         headers: {
@@ -371,16 +383,19 @@ function verificarTamanhoTitulo() {
     if (tamanho_titulo > 45) {
         span_titulo.style.color = 'red';
         span_titulo.style.fontWeight = 'bold';
-        return;
+        return false;
     }
 
     if (tamanho_titulo > 40) {
-        span_titulo.style.color = 'yellow';
-        return;
+        span_titulo.style.color = '#DAA520';
+        return false;
     }
 
     span_titulo.style.color = 'black';
+    return true;
 }
+span_titulo.style.color = 'black';
+span_conteudo.style.color = 'black';
 
 function verificarTamanhoConteudo() {
     var conteudo = input_conteudo.value;
@@ -388,16 +403,17 @@ function verificarTamanhoConteudo() {
 
     span_conteudo.innerHTML = `${tamanho_conteudo}/500`;
 
-    if (tamanho_conteudo > 45) {
+    if (tamanho_conteudo > 500) {
         span_conteudo.style.color = 'red';
         span_conteudo.style.fontWeight = 'bold';
-        return;
+        return false;
     }
 
-    if (tamanho_conteudo > 40) {
-        span_conteudo.style.color = 'yellow';
-        return;
+    if (tamanho_conteudo > 450) {
+        span_conteudo.style.color = '#DAA520';
+        return false;
     }
 
     span_conteudo.style.color = 'black';
+    return true;
 }
