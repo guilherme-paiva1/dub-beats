@@ -361,3 +361,43 @@ function listarComentarios(idPostagem) {
 
     return false;
 }
+
+function verificarTamanhoTitulo() {
+    var titulo = input_titulo.value;
+    var tamanho_titulo = titulo.length;
+
+    span_titulo.innerHTML = `${tamanho_titulo}/45`;
+
+    if (tamanho_titulo > 45) {
+        span_titulo.style.color = 'red';
+        span_titulo.style.fontWeight = 'bold';
+        return;
+    }
+
+    if (tamanho_titulo > 40) {
+        span_titulo.style.color = 'yellow';
+        return;
+    }
+
+    span_titulo.style.color = 'black';
+}
+
+function verificarTamanhoConteudo() {
+    var conteudo = input_conteudo.value;
+    var tamanho_conteudo = conteudo.length;
+
+    span_conteudo.innerHTML = `${tamanho_conteudo}/500`;
+
+    if (tamanho_conteudo > 45) {
+        span_conteudo.style.color = 'red';
+        span_conteudo.style.fontWeight = 'bold';
+        return;
+    }
+
+    if (tamanho_conteudo > 40) {
+        span_conteudo.style.color = 'yellow';
+        return;
+    }
+
+    span_conteudo.style.color = 'black';
+}

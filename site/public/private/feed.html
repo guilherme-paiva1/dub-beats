@@ -77,11 +77,13 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="input_titulo" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="input_titulo" placeholder="Título da publicação">
+                        <input type="text" class="form-control" id="input_titulo" oninput="verificarTamanhoTitulo()" placeholder="Título da publicação">
+                        <span class="aviso-postagem" id="span_titulo">0/45</span>
                     </div>
                     <div class="mb-3">
                         <label for="input_conteudo" class="form-label">Conteúdo</label>
-                        <input type="textarea" class="form-control" id="input_conteudo"></input>
+                        <textarea class="form-control" id="input_conteudo" oninput="verificarTamanhoConteudo()"></textarea>
+                        <span class="aviso-postagem" id="span_conteudo">0/500</span>
                     </div>
                 </div>
                 <div class="modal-footer">
